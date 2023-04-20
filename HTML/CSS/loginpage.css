@@ -1,0 +1,121 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+    background-image: url("HomePageBG.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.container-md{
+  background-color: #fff;
+  height: 320px;
+  width: 400px;
+  max-width: 80%;
+  position: relative;
+  margin: 3% auto;
+  box-shadow: 0 5px 10px #0000001a;
+  border-bottom: 2px solid #000;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  border-left: 2px solid #000;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.container-md .input-group .name,
+.container-md .input-group .password{
+    width: 320px;
+}
+
+h3{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.container-login .form{
+  left: 25px;
+  width: 350px;
+  margin: 0% auto;
+  border: 2px solid #0000001a;
+  position: absolute;
+  transition: 0.5s;
+}
+
+.container-login .input-group{
+    text-align: center;
+}
+.container-login .input-group{
+    text-align: center;
+}
+
+.container-login{
+    text-align: center;
+  }
+
+
+form #error{
+  font-size: 12px; 
+  color: red;
+  text-align: center;
+}
+
+.text-danger{
+  font-size: 15px; 
+  color: red;
+  text-align: right;
+}
+
+/* Button */
+.container-md button{
+  color: #0b243c;
+  font-weight: bolder;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  transition: 0.4s;
+  letter-spacing: 1px;
+  background: #079ef6;
+  padding: 10px 34px;
+  border-radius: 30px;
+  text-align: center;
+  border: 1px solid #fff;
+  cursor: pointer;
+  position:relative;
+  overflow:hidden;
+}
+
+.container-md button:hover{
+  color: #fff;
+  background-color: #0887c6;
+  cursor: pointer;
+}
+
+.container-md button:before{
+  content: "";
+  position: absolute;
+  height: 150px;
+  width: 50px;
+  background : #fff;
+  left: -55px;
+  top: -40px;
+  transform: rotate(37deg);
+  transition: all .3s;
+  opacity: 0.3;
+}
+
+.container-md button:hover:before{
+  left:95%;
+}
+
+.container-md .submitButton{
+    text-align: center;
+}
+/* End of button */

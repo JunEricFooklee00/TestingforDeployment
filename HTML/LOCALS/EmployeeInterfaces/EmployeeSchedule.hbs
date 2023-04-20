@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EMS</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
+        <link rel="shortcut icon" href="../CSS/hehe.png">
+        <link rel="stylesheet" href="../CSS/calendar.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <aside>
+                <div class="top">
+                    <div class="logo">
+                        <img src="https://cdn.discordapp.com/attachments/1075714300020269127/1075714382060847184/emslogo.gif">
+                        <h2 >EMS </h2>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="sidebar">
+                    <a href="/EmployeeInterface">
+                        <span class="material-symbols-sharp">dashboard</span>
+                        <h3> Dashboard</h3>
+                    </a >
+                    <a href="/EmployeeSchedule" class="active">
+                        <span class="material-symbols-sharp">calendar_month</span>
+                        <h3>Schedule</h3>
+                    </a>
+                    
+                    <a href="/MachineLearningForm">
+                        <span class="material-symbols-sharp">work</span>
+                        <h3>Job Order</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-sharp">settings</span>
+                        <h3>Settings</h3>
+                    </a>
+                    <a href="#" onclick="logoutSubmit()">
+                        <span class="material-symbols-sharp">logout</span>
+                            <h3>Log Out</h3>
+                    </a>
+                </div>
+            </aside>           
+
+            <!---end of aside-->
+
+            <main>
+                <h1>
+                    EMS Schedule
+                </h1>
+
+                <div id="container2">
+                    <div id="header">
+                        <div id="monthDisplay"></div>
+                        <div>
+                            <button id="backButton">Back</button>
+                            <button id="nextButton">Next</button>
+                        </div>
+                    </div>
+
+                    <div id="weekdays">
+                        <div style="margin-left: 18px;">Sunday</div>
+                        <div style="margin-left: 9px;">Monday</div>
+                        <div style="margin-left: 8px;">Tuesday</div>
+                        <div style="margin-left: -2px;">Wednesday</div>
+                        <div style="margin-left: 18px;">Thursday</div>
+                        <div style="margin-left: 20px;">Friday</div>
+                        <div style="margin-left: 0px;">Saturday</div>
+                    </div>
+
+                    <div id="calendar"></div>
+                </div>
+
+                <div id="newEventModal">
+                    <h2>New Event</h2>
+
+                    <input id="eventTitleInput" placeholder="Event Title" />
+
+                    <button id="saveButton">Save</button>
+                    <button id="cancelButton">Cancel</button>
+                </div>
+
+                <div id="deleteEventModal">
+                    <h2>Event</h2>
+
+                    <p id="eventText"></p>
+
+                    <button id="deleteButton">Delete</button>
+                    <button id="closeButton">Close</button>
+                </div>
+
+                <div id="modalBackDrop"></div>
+            </main>
+                <!--END OF MAIN-->                    
+        </div>
+
+        <script src="/JS/calendar.js"></script>
+        <script src="/JS/sidebar.js"></script>
+    </body>
+</html>

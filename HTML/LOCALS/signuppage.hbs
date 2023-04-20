@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EMS</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../CSS/hehe.png">
+    <link rel="stylesheet" href="../CSS/signuppage.css">
+  </head>
+ 
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <img src="../CSS/emslogo.gif" height="50px">
+      <a class="navbar-brand" href="#">EMS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                     <a class="nav-link" aria-current="page" href="#">Career Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">About Us</a>
+                </li>
+            </ul>
+            <div class="d-grid gap-2 d-md-block">
+                <a href="/loginpage"><button class="button" id="href">Already have an account?</button></a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <body>   
+        <div class="container-xl">
+            <div id="progress"></div>
+            <div class="row">
+                <div class="col" style="font-size: 15px; text-align-last: center;">
+                    Step 1
+                </div>
+                 <div class="col" style="font-size: 15px; text-align-last: center;">
+                    Step 2
+                </div>
+                 <div class="col" style="font-size: 15px; text-align-last: center;">
+                    Step 3
+                </div>
+                 <div class="col" style="font-size: 15px; text-align-last: center;">
+                    Step 4
+                </div>
+            </div>
+            <h1 style="font-size: 20px;">Sign Up</h1>
+            <form id="overall" action="/signuppage" method="post" enctype="multipart/form-data">
+                <div class="container-sm" id="form1">
+                    <div class="form-usertype">
+                        <select name="user" id ="user" class="user" value="{{data1.user}}" oninput="checkUser()" style="appearance: none;">
+                            <option selected disabled hidden>Choose User Type</option>
+                            <option value="Client">Client</option>
+                            <option value="Employee">Employee</option>
+                        </select>
+                    </div>
+                    <div class="form-jobtype">
+                        <select name="job" id ="job" class="job" value="{{data1.job}}" oninput="checkUser()" style="appearance: none; display: none;">
+                            <option selected disabled hidden>Choose Job Type</option>
+                            <option value="Carpenter">Carpenter</option>
+                            <option value="Electrician">Electrician</option>    
+                            <option value="Mason">Mason</option>
+                            <option value="Painter">Painter</option>
+                            <option value="Plumber">Plumber</option>
+                            <option value="Welder">Welder</option>
+                            <option value="Labor Helper">Labor Helper</option>
+                        </select>
+                    </div>
+                </div>
+{{!--           </div>          
+                    <input type="text" class="name" name="name" placeholder="FirstName MI. LastName" oninput="checkName()" size="30" value="{{data1.name}}">
+                    <span class="error name-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+
+                    <input type="text" class="email" name="email" placeholder="example@example.com" oninput="checkEmail()" size="30" value="{{data1.email}}">
+                    <span class="error email-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+                        
+                    <input type="text" class="username" name="username" placeholder="Username" oninput="checkUsername()" size="30" value="{{data1.username}}">
+                    <span class="error username-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+
+                    <input type="password" class="password" id="password" name="password" placeholder="Password" oninput="checkPassword()" size="30" value="{{data1.password}}">
+                    <span class="error password-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                    </span> <i class="bx bx-hide" id="hide1"></i><i class="bx bx-show" id="show1"></i> <p class="error-text">This field is required</p>
+
+                    <input type="password" class="confPass" id="confPass" name="confPass" placeholder="Confirm Password" oninput="checkConfPass()" size="30" value="{{data1.confPass}}">
+                    <span class="error confPass-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                    </span><i class="bx bx-hide" id="hide2"></i><i class="bx bx-show" id="show2"></i> <p class="error-text">This field is required</p>
+
+                    <div class="btn-box">
+                        <button type="button" id="Next1">Next</button>
+                    </div>
+                </div> --}}
+         </form>
+        </div>
+            {{!-- <div class="container-signup">
+                
+                <div class="step-row">
+                    <div id="progress"></div>
+                    <div class="step-col"><small>Step 1</small></div>
+                    <div class="step-col"><small>Step 2</small></div>
+                    <div class="step-col"><small>Step 3</small></div>
+                    <div class="step-col"><small>Step 4</small></div>
+                </div>
+
+                <h3>Sign Up</h3>
+
+                <form id="overall" action="/signuppage" method="post" enctype="multipart/form-data">
+
+                    <div class="form" id="form1">
+                
+                        <div class="form-usertype">
+                            <select name="user" id ="user" class="user" value="{{data1.user}}" oninput="checkUser()" style="appearance: none;">
+                                <option selected disabled hidden>Choose User Type</option>
+                                <option value="Client">Client</option>
+                                <option value="Employee">Employee</option>
+                            </select>
+                        </div>
+
+                        <div class="form-jobtype">
+                            <select name="job" id ="job" class="job" value="{{data1.job}}" oninput="checkUser()" style="appearance: none; display: none;">
+                                <option selected disabled hidden>Choose Job Type</option>
+                                <option value="Carpenter">Carpenter</option>
+                                <option value="Electrician">Electrician</option>    
+                                <option value="Mason">Mason</option>
+                                <option value="Painter">Painter</option>
+                                <option value="Plumber">Plumber</option>
+                                <option value="Welder">Welder</option>
+                                <option value="Labor Helper">Labor Helper</option>
+                            </select>
+                        </div>
+                        
+                        <input type="text" class="name" name="name" placeholder="FirstName MI. LastName" oninput="checkName()" size="30" value="{{data1.name}}">
+                        <span class="error name-error">
+                            <i class="bx bx-error-circle error-icon"></i>
+                        </span> <p class="error-text">This field is required</p>
+
+                        <input type="text" class="email" name="email" placeholder="example@example.com" oninput="checkEmail()" size="30" value="{{data1.email}}">
+                        <span class="error email-error">
+                            <i class="bx bx-error-circle error-icon"></i>
+                        </span> <p class="error-text">This field is required</p>
+                        
+                        <input type="text" class="username" name="username" placeholder="Username" oninput="checkUsername()" size="30" value="{{data1.username}}">
+                        <span class="error username-error">
+                            <i class="bx bx-error-circle error-icon"></i>
+                        </span> <p class="error-text">This field is required</p>
+
+                        <input type="password" class="password" id="password" name="password" placeholder="Password" oninput="checkPassword()" size="30" value="{{data1.password}}">
+                        <span class="error password-error">
+                            <i class="bx bx-error-circle error-icon"></i>
+                        </span> <i class="bx bx-hide" id="hide1"></i><i class="bx bx-show" id="show1"></i> <p class="error-text">This field is required</p>
+
+                        <input type="password" class="confPass" id="confPass" name="confPass" placeholder="Confirm Password" oninput="checkConfPass()" size="30" value="{{data1.confPass}}">
+                        <span class="error confPass-error">
+                            <i class="bx bx-error-circle error-icon"></i>
+                        </span><i class="bx bx-hide" id="hide2"></i><i class="bx bx-show" id="show2"></i> <p class="error-text">This field is required</p>
+
+                        <div class="btn-box">
+                            <button type="button" id="Next1">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="form" id="form2" autocomplete="on">
+                    
+                        <div class="form-bday">
+                            <h1 for="birthday" style="font-size: 12px; display: flex; font-weight: normal;">Birthday:</h1>
+                            <input style="margin-top: 0px; text-align: center;" type="date" id="birthday" class="birthday" oninput="checkBDay()" name="birthday" max="2023-12-31" value="{{data1.birthday}}"> 
+                        </div>
+
+                        <div class="form-gender">
+                            <h1 style="font-size: 12px; margin-top: -16px; display: flex; font-weight: normal;">Gender:</h1> 
+                            <div class="form-radiobutton">
+                                <input type="radio" id="Male" class="gender" oninput="checkGender()" name="gender" value="Male">
+                                <label style="font-size: 15px" for="Male">
+                                    <span>Male</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="radio" id="Female" class="gender" oninput="checkGender()" name="gender" value="Female">
+                                <label style="font-size: 15px; left: 110px;" for="Female">
+                                    <span>Female</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <input type="number" class="contactNumber" name="contactNumber" placeholder="Contact Number" oninput="checkContNum()" size="20"  maxlength = "11" value="{{data1.contactNumber}}"> 
+                        <span class="error contactnumber-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                        </span> <p class="error-text">This field is required</p>
+
+                        <input type="text" class="address1" name="address1" placeholder="House number & lot number" oninput="checkAdd1()" size="35" value="{{data1.address1}}">
+                        <span class="error address1-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                        </span> <p class="error-text">This field is required</p>
+
+                        <input type="text" class="address2" name="address2" placeholder="Barangay" oninput="checkAdd2()" size="35" value="{{data1.address2}}" style="width: 49.4%">
+                        <span class="error address2-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                        </span> <p class="error-text">This field is required</p>
+
+                        <input type="text" class="address3" name="address3" placeholder="City" oninput="checkAdd3()" size="35" value="{{data1.address3}}" style="width: 49.4%">
+                        <span class="error address3-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                        </span> <p class="error-text">This field is required</p>
+
+                        <input type="text" class="address4" name="address4" placeholder="Province" oninput="checkAdd4()" size="35" value="{{data1.address4}}" style="width: 49.4%">
+                        <span class="error address4-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                        </span> <p class="error-text">This field is required</p>
+
+                        <input type="number" class="zipcode" name="zipcode" placeholder="Zip Code" oninput="checkZip()" size="4" maxlength="4" value="{{data1.zipcode}}" style="width: 49.4%" >
+                        <span class="error zipcode-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                        </span> <p class="error-text">This field is required</p>
+
+                        <div class="btn-box">
+                            <button type="button" id="Back1">Back</button>
+                            <button type="button" id="Next2">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="form" id="form3">
+                        <label for="images"> Resume </label>
+                            <input type="file" name="images" > <br><br>
+                        <label for="image"> Picture </label>
+                            <input type="file" name="image" > <br><br>
+
+                        <div class="btn-box">
+                            <button type="button" id="Back2">Back</button>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+                    <form id="form4">
+                        <p>Success</p>
+                        <div class="btn-box">
+                            <button type="button" id="Back3">Back</button>
+                            <button><input type="button"></button>
+                        </div>
+                    </form>
+                </div> --}}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <script src="/JS/signuppage.js"></script>
+    </body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EMS</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
+        <link rel="shortcut icon" href="../CSS/hehe.png">
+        <link rel="stylesheet" href="../CSS/MachineLearningForm.css">
+        {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script> --}}
+    </head>
+
+    <body>
+        <div class="container">
+            <aside>
+                <div class="top">
+                    <div class="logo">
+                        <img src="https://cdn.discordapp.com/attachments/1075714300020269127/1075714382060847184/emslogo.gif">
+                        <h2 >EMS </h2>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="sidebar">
+                    <a href="/ClientInterface" >
+                        <span class="material-symbols-sharp">dashboard</span>
+                        <h3> Dashboard</h3>
+                    </a >
+                    <a href="/Schedule">
+                        <span class="material-symbols-sharp">calendar_month</span>
+                        <h3>Schedule</h3>
+                    </a>
+                    <a href="/MachineLearningForm" class="active">
+                        <span class="material-symbols-sharp">work</span>
+                        <h3>Job Order</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-sharp">settings</span>
+                        <h3>Settings</h3>
+                    </a>
+                    <a href="#" onclick="logoutSubmit()">
+                        <span class="material-symbols-sharp">logout</span>
+                        <h3>Log Out</h3>
+                    </a>
+                </div>
+            </aside>
+            <!---end of aside-->
+            <main>
+                <h2>
+                    Joblist Dashboard
+                </h2>
+                <div class="plus-button">
+                    <button class="delete-button">
+                         <span class="material-symbols-sharp" style="font-size: 30px; color: #7380ec;">cancel</span>
+                    </button>
+                    <button class="JOmodal-button" data-modal-target="#JOmodal">
+                        <span class="material-symbols-sharp" style="font-size: 30px; color: #7380ec;">add_circle</span>
+                    </button>  
+                </div>
+                <div class="job-list-container">
+                    <div class="insights" id="jobs-container">
+                        {{#each list}}
+                        <div class="clickable-item" data-id="{{this._id}}">
+                            <div class="project_prog">
+                                <span class="material-symbols-sharp">analytics</span>
+                                <div class="middle">
+                                    <div class="left">
+                                        <h3>Type of Work:{{this.TypeOfWork}}</h3>
+                                        <h1>Client Name:{{this.name}}</h1>
+                                    </div>
+                                    <div class="progress">
+                                        <svg>
+                                            <circle cx='38'cy='38' r = '36'></circle>
+                                        </svg>
+                                        <div class="number">
+                                            <p> 81% </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <small class="text-muted">Last 24 Hours</small>
+                            </div> 
+                        <div class="additional-info" style="display: none;" id="info-{{this._id}}">  
+                            <table class="table">
+                                <tr>  
+                                    <th style="width: 180px;">Starting Date</th>
+                                    <td>{{this.StartingDate}}</td>  
+                                </tr>  
+                                <tr>
+                                    <th style="width: 180px;">Expected Finish Date</th>
+                                    <td>{{this.ExpectedFinishDate}}</td>
+                                </tr>    
+                                <tr>
+                                    <th style="width: 100px;">Area</th>
+                                    <td>{{this.Area}}</td>
+                                </tr>
+                                <tr>
+                                <th style="width: 100px;">Unit</th>
+                                <td>{{this.Unit}}</td>
+                                </tr>     
+                                <tr>
+                                    <th style="width: 100px;">Location</th>
+                                    <td>{{this.Location}}</td>
+                                </tr>         
+                            </table>
+                        </div>
+                    </div>
+                {{/each}}
+                </div>
+                <div class="JOmodal" id="JOmodal">
+                    <div class="JOmodal-header">
+                        <div class="JOtitle">Job Order</div>
+                        <button data-close-buttonJO class="JOclose-button">&times;</button>
+                    </div>
+                    <div class="JOmodal-body">
+                        <form class="form" onsubmit="submitForm(event)">
+                            <table>
+                                <tr>
+                                    <td> <b style ="font-size: 12px">Client Name:</b> </td>
+                                    <th scope="col"><input type="text" name="name" value="{{user.name}}"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><label for="TypeOfWork"><b style ="font-size: 12px">Scope of Work:</b></label></th>
+                                    <th scope="row">
+                                    <select class="TypeofWork" name="TypeOfWork" style="font-size: 12px;">
+                                        <optgroup label="Site Preparation">
+                                            <option selected disabled hidden>Choose Type of Work</option>
+                                            <option value="Site Preparation - Filling and backfilling works">Filling and backfilling works</option>
+                                            <option value="Site Preparation - Excavation of soil and/or Footing Excavation ">Excavation of soil and/or Footing Excavation</option>
+                                            <option value="Site Preparation - Gravel bedding">Gravel bedding</option>  
+                                            <option value="Site Preparation - Chipping of slab">Chipping of slab</option>
+                                            <option value="Site Preparation - Chipping of existing tiles">Chipping of existing tiles</option>
+                                            <option value="Site Preparation - Chipping of existing slab for ducting">Chipping of existing slab for ducting</option>
+                                            <option value="Site Preparation - Demolish existing ceiling and wood truss">Demolish existing ceiling and wood truss</option>
+                                            <option value="Site Preparation - Demolish existing accordion door">Demolish existing accordion door</option>
+                                            <option value="Site Preparation - Demolish front wall">Demolish front wall </option>
+                                            <option value="Site Preparation - Demolish existing staircase/stairway">Demolish existing staircase/stairway</option>
+                                            <option value="Site Preparation - Demolish existing grills">Demolish existing grills</option>
+                                            <option value="Site Preparation - Demolish dilapidated roofing">Demolish dilapidated roofing</option>
+                                            <option value="Site Preparation - Site Clearing/Hauling and Disposal works">Site Clearing/Hauling and Disposal works</option>
+                                        </optgroup>
+                                        <optgroup label="Carpentry Works">
+                                            <option value="Carpentry Works - Carpentry works for Main Counter (repair only) ">Carpentry works for Main Counter (repair only)</option>
+                                            <option value="Carpentry Works - Carpentry works for Ceiling, Parapet, and Canopy">Carpentry works for Ceiling, Parapet, and Canopy</option>
+                                            <option value="Carpentry Works - Construction of Dry Wall (Interior Wall and Partition)">Construction of Dry Wall (Interior Wall and Partition)</option>
+                                            <option value="Carpentry Works - Construction of Exterior Wall using Rib type GI Sheet">Construction of Exterior Wall using Rib type GI Sheet</option>
+                                            <option value="Carpentry Works - Wall Cabinet and Shelves at Sink Area Installation">Wall Cabinet and Shelves at Sink Area Installation</option>
+                                        </optgroup>
+                                        <optgroup label="Mechanical/Metal Works">
+                                            <option value="Mechanical/Metal Works - Stainless works for Main Counter (Repair only)">Stainless works for Main Counter (Repair only)</option>
+                                            <option value="Mechanical/Metal Works - Welding works for Steel frame of Main Counter">Welding works for Steel frame of Main Counter</option>
+                                            <option value="Mechanical/Metal Works - Fabrication of Steel Gate">Fabrication of Steel Gate</option>
+                                            <option value="Mechanical/Metal Works - Fabrication of Steel columns and members">Fabrication of Steel columns and members</option>
+                                            <option value="Mechanical/Metal Works - 40cmx30cm steel louvers installation">40cmx30cm steel louvers installation</option>
+                                            <option value="Mechanical/Metal Works - Installation of exhaust fans">Installation of exhaust fans</option>
+                                            <option value="Mechanical/Metal Works - Fabrication and Installation of metal roll up door">Fabrication and Installation of metal roll up door</option>
+                                            <option value="Mechanical/Metal Works - Menu Board Hooking and Installation">Menu Board Hooking and Installation</option>
+                                            <option value="Mechanical/Metal Works - Steel ramp fabrication">Steel ramp fabrication</option>
+                                            <option value="Mechanical/Metal Works - LPG Cage Fabrication">LPG Cage Fabrication</option>
+                                        </optgroup>
+                                        <optgroup label="Electrical Works">
+                                            <option value="Electrical Works - Main Line and Wiring Distribution System">Main Line and Wiring Distribution System</option>
+                                            <option value="Electrical Works - Interior and Exterior Lightings">Interior and Exterior Lightings</option>
+                                        </optgroup>
+                                        <optgroup label="Painting Works">
+                                            <option value="Painting Works - Plain Concrete Surfaces (Surface Prep - Primer - Finish Coat)">Plain Concrete Surfaces (Surface Prep - Primer - Finish Coat)</option>
+                                            <option value="Painting Works - Wooden / Metal Surfaces (Surface Prep - Primer - Finish Coat)">Wooden / Metal Surfaces (Surface Prep - Primer - Finish Coat)</option>
+                                            <option value="Painting Works - Plain Concrete and Wooden / Metal Surfaces (Surface Prep - Primer - Finish Coat)">Plain Concrete and Wooden / Metal Surfaces (Surface Prep - Primer - Finish Coat)</option>
+                                        </optgroup>
+                                        <optgroup label="Thermal & Moisture Protection Works">
+                                            <option value="Thermal & Moisture Protection Works - Roofing Works and Framing Installation">Roofing Works and Framing Installation</option>
+                                            <option value="Thermal & Moisture Protection Works - Installation of Gutter, Flushing and Ridge Roll">Installation of Gutter, Flushing and Ridge Roll</option>
+                                            <option value="Thermal & Moisture Protection Works - Counter Acrylic Shield Cover">Counter Acrylic Shield Cover</option>
+                                        </optgroup>
+                                        </select>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row"> <b style ="font-size: 12px">Unit area for the job:</b></th>
+                                    <th scope="row">   
+                                        <input type="number" name="Area" class="Area" placeholder="Area" size="7" maxlength="11" style="left: 10px;" autocomplete="off">
+                                        <select name="Unit" id="dropdown">
+                                            <option selected disabled hidden>Select an Option</option>
+                                            <option value=" CubicMeter">Cubic Meter</option>
+                                            <option value=" SquareMeter">Square Meter</option>
+                                            <option value=" Meter">Meter</option>
+                                        </select>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row"> <b style ="font-size: 12px">Location:</b></th>
+                                    <th scope="row"> <input type="text" name="Location" placeholder="Location" size="60"></th>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row"><label for="StartingDate"><b style ="font-size: 12px">Starting Date:</b></label></th>
+                                    <th scope="row"><input type="date" name="StartingDate" style="font-size: 12px" max="2023-12-31"> </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><b style ="font-size: 12px">Days of Expected to Finish:</b></th>
+                                    <th scope="row"> <b style ="font-size: 12px"></b>  <input type="number" name="ExpectedFinishDate" placeholder="Days" size="15">
+                                </tr>
+                            </table>
+
+                            <button type="submit" class="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="JOoverlay"></div>
+            </main>
+            <!--END OF MAIN-->
+            <div class="right">
+                <div class="top">
+                    <button id="menu btn">
+                        <span class="material-symbols-sharp">menu</span>
+                    </button>
+                </div>
+                <div class="data-container hidden">
+                    <h2>Entry Data</h2>
+                    <div class="data-container1">
+                        <div class="data-container2">
+                            <div class="entry-data-container">
+                                <div class="message">
+                                    <div class="info-table-container" id="info-table-container">
+                                        <table id="info-table">
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                    <button class="RFmodal-button" data-modal-target="#RFmodal">Recommend/Forecast</button>
+                                    <div class="RFmodal" id="RFmodal">
+                                        <div class="RFmodal-header">
+                                            <div class="RFtitle">Output</div>
+                                            <button data-close-buttonRF class="RFclose-button">&times;</button>
+                                        </div>
+                                        <div class="RFmodal-body">
+                                            TITE MALAKI
+                                            LEZGO
+                                            LEZGO
+                                        </div>
+                                    </div>
+                                    <div id="RFoverlay"></div>
+                                    <hr>
+                                    <div id="output" style="font-size: 15px; font-weight: 500;">Output:</div>
+                                    <div class="decision-button">
+                                        <button id="Accept" onclick="showOutput()">Accept</button>
+                                        <button id="Reject" onclick="showOutput()">Reject</button>
+                                        <button id="Validate" onclick="showOutput()">Validate</button>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/JS/sidebar.js"></script>
+        <script src="/JS/JobOrder.js"></script>
+    </body>
+</html>

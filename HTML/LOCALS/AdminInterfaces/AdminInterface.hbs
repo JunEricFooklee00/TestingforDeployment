@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EMS</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
+        <link rel="shortcut icon" href="../CSS/hehe.png">
+        <link rel="stylesheet" href="../CSS/AdminInterface.css">
+    </head>
+
+    <body>
+        <nav class="navbar bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Offcanvas navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                    <form class="d-flex mt-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </nav>
+        {{!-- <div class="container">
+            <aside>
+                <div class="top">
+                    <div class="logo">
+                        <img src="https://cdn.discordapp.com/attachments/1075714300020269127/1075714382060847184/emslogo.gif">
+                        <h2 >EMS </h2>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="sidebar">
+                    <a href="/AdminInterface" class="active">
+                        <span class="material-symbols-sharp">dashboard</span>
+                        <h3> Dashboard</h3>
+                    </a >
+                    <a href="/Schedule">
+                        <span class="material-symbols-sharp">calendar_month</span>
+                        <h3>Schedule</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-sharp">calendar_month</span>
+                        <h3>Jobs Pending</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-sharp">construction</span>
+                        <h3>Projects</h3>
+                    </a>
+                    <a href="/EmployeeDB">
+                        <span class="material-symbols-sharp">engineering</span>
+                        <h3>Employees' Database</h3>
+                    </a>
+                    <a href="/ClientDB">
+                        <span class="material-symbols-sharp">groups</span>
+                        <h3>Clients' Database</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-sharp">settings</span>
+                        <h3>Settings</h3>
+                    </a>
+                    <a href="#" onclick="logoutSubmit()">
+                        <span class="material-symbols-sharp">logout</span>
+                        <h3>Log Out</h3>
+                    </a>
+                </div>
+            </aside>
+
+            <!---end of aside-->
+            <main>
+                <h1>
+                    EMS Dashboard
+                </h1>
+
+                <div class="insights">
+                    <div class="project_prog">
+                        <span class="material-symbols-sharp">analytics</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Project 1 Progress</h3>
+                                <h1>Client 1</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx='38'cy='38' r = '36'></circle>
+                                </svg>
+                                <div class="number">
+                                    <p> 81% </p>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+
+                    </div>
+                    <!---end of proj 1-->
+                    <div class="project_prog2">
+                        <span class="material-symbols-sharp">analytics</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Project 2 Progress</h3>
+                                <h1>Client 2</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx='38'cy='38' r = '36'></circle>
+                                </svg>
+                                <div class="number">
+                                    <p> 62% </p>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+
+                    </div>
+                    <!---end of proj 2-->
+                    <div class="project_prog3">
+                        <span class="material-symbols-sharp">analytics</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Project 3 Progress</h3>
+                                <h1>Client 3</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx='38'cy='38' r = '36'></circle>
+                                </svg>
+                                <div class="number">
+                                    <p> 50% </p>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+
+                    </div>
+                    <!---end of proj 1-->
+                </div>
+                <!-- end of insights-->
+                <div class="recent-project">
+                    <h2>Recent Projects</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product Type </th>
+                                <th> Project Number  </th>
+                                <th> Adress  </th>
+                                <th>Square Meter</th>
+                                <th> Status  </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Renovation</td>
+                                <td>85631</td>
+                                <td>UE CALOOCAN</td>
+                                <td>7329372.87 m</td>
+                                <td class="warning">Pending</td>
+                                <td class="primary">Details</td>
+                            </tr>
+                            <tr>
+                                <td>Renovation</td>
+                                <td>85631</td>
+                                <td>UE CALOOCAN</td>
+                                <td>7329372.87 m</td>
+                                <td class="warning">Pending</td>
+                                <td class="primary">Details</td>
+                            </tr>
+                            <tr>
+                                <td>Renovation</td>
+                                <td>85631</td>
+                                <td>UE CALOOCAN</td>
+                                <td>7329372.87 m</td>
+                                <td class="warning">Declined</td>
+                                <td class="primary">Details</td>
+                            </tr>
+                            <tr>
+                                <td>Renovation</td>
+                                <td>85631</td>
+                                <td>UE CALOOCAN</td>
+                                <td>7329372.87 m</td>
+                                <td class="warning">Done</td>
+                                <td class="primary">Details</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="#">Show All</a>
+                </div>
+            </main>
+            <!--END OF MAIN-->
+        <div class="right">
+            <div class="top">
+                <button id="menu btn">
+                    <span class="material-symbols-sharp">menu</span>
+                </button>
+            </div>
+            <div class="profile">
+                <div class="info">
+                    <p>Hey, <b>{{user.name}}</b></p>
+                </div>
+                <div class="profile">
+                    <img src="{{user.avatar}}" height="50px" width="50px" >
+                </div>
+            </div>
+            <!--end of top-->
+            <div class="recent-updates">
+                <h2>Employee Updates</h2>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./images/da.jpg" >
+                        </div>
+                        <div class="message">
+                            <p><b>Charles Magno </b> Finished his project as Plumber in Project 5</p>
+                            <small class="text-muted">3 minutes ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./images/da.jpg" >
+                        </div>
+                        <div class="message">
+                            <p><b>Charles Magno </b> Finished his project as Plumber in Project 5</p>
+                            <small class="text-muted">3 minutes ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./images/da.jpg" >
+                        </div>
+                        <div class="message">
+                            <p><b>Charles Magno </b> Finished his project as Plumber in Project 5</p>
+                            <small class="text-muted">3 minutes ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                <!--end of recent-updates-->
+            <div class="customer-feedbacks">
+                <h2>Customer Feedbacks</h2>
+                <div class="feedbacks">
+                    <div class="feedback">
+                        <div class="profile-photo">
+                            <img src="./images/da.jpg" >
+                        </div>
+                        <div class="message">
+                            <p><b>Charles Magno </b> Maganda ang pagkakayari na parang isang good girl</p>
+                            <small class="text-muted">3 minutes ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="feedbacks">
+                    <div class="feedback">
+                        <div class="profile-photo">
+                            <img src="./images/da.jpg" >
+                        </div>
+                        <div class="message">
+                            <p><b>Charles Magno </b> Maganda ang pagkakayari na parang isang good girl</p>
+                            <small class="text-muted">3 minutes ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="feedbacks">
+                    <div class="feedback">
+                        <div class="profile-photo">
+                            <img src="./images/da.jpg" >
+                        </div>
+                        <div class="message">
+                            <p><b>Charles Magno </b> Maganda ang pagkakayari na parang isang good girl</p>
+                            <small class="text-muted">3 minutes ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-project">
+                    <div>
+                        <span class="material-symbols-sharp">add</span>
+                        <h3>Add Project</h3>
+                    </div>
+                </div>
+            </div>                    
+        </div>
+
+    </div> --}}
+
+    <script src="/JS/sidebar.js"></script>
+        
+    </body>
+</html>

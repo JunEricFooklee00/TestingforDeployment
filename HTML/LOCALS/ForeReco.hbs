@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EMS</title>
+        <link rel="shortcut icon" href="../CSS/hehe.png">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+</head>
+<body>
+	<h1>Forecasting System:</h1>
+	<form>
+		<label for="Model Select">Select Model:</label>
+		<select id="Model Select" name="Model Select">
+			<option value="" disabled selected>Please Select</option>
+			<option value="B2 - Carpentry Works for Main Counter">B2 - Main Counter Carpentry Works</option>
+			<option value="C1 - Stainless Works for Main Counter">C1 - Stainless Top at Main Top Counter</option>
+			<option value="D2 - Pipeline and Fixture Installation">D2 - Water System</option>
+			<option value="D3 - Drainage Pipeline Installation">D3 - Drainage System</option>
+			<option value="G1 - Plain Concrete Surfaces (Surface Prep - Primer - Finish Coat)">G1 - Plain Concrete Surfaces</option>
+			<option value="G2 - Wooden_Metal Surfaces (Surface Prep - Primer - Finish Coat)">G2 - Wood_Metal Surfaces</option>
+
+		<label for="Productivity Ratio">Productivity Ratio:</label>
+		<input type="number" id="Productivity Ratio" name="Productivity Ratio" readonly><br>
+		<span id="unit"></span><br>
+
+
+		<label for="Unit Quantity">Unit Quantity:</label>
+		<input type="number" id="Unit Quantity" name="Unit Quantity"><br>
+
+		<label for="Unit Hour">No. of Days:</label>
+		<input type="number" id="Unit Hour" name="Unit Hour"><br>
+
+
+		<button type="button" id="predictButton">Predict</button>
+	</form>
+
+    <div id="predictionResult"></div>
+
+	<h1>Recommendation System:</h1>
+
+		<form method="post">
+		<label for="Scope of Works">Select Scope of Works:</label>
+		<select id="Scope of Works" name="Scope of Works" onchange="updateRecommend()">
+			<option value="" disabled selected>Please Select</option>
+			<option value="B2 - Carpentry Works for Main Counter">B2 - Main Counter Carpentry Works</option>
+			<option value="C1 - Stainless Works for Main Counter">C1 - Stainless Top at Main Top Counter</option>
+			<option value="D2 - Pipeline and Fixture Installation">D2 - Water System</option>
+			<option value="D3 - Drainage Pipeline Installation">D3 - Drainage System</option>
+			<option value="E - Masonry / Concrete Works">E - Masonry / Concrete Works</option>
+			<option value="F - Electrical Works">F - Electrical Works</option>
+			<option value="G1 - Plain Concrete Surfaces (Surface Prep - Primer - Finish Coat)">G1 - Plain Concrete Surfaces</option>
+			<option value="G2 - Wooden_Metal Surfaces (Surface Prep - Primer - Finish Coat)">G2 - Wood_Metal Surfaces</option>
+		</select><br>
+				<div id="input-sets">
+			<div class="input-set">
+				<label for="Recommend">Find the optimal worker:</label>
+				<select id="Recommend" name="Recommend"></select><br><br>
+				<label for="Number of Worker">What is the Number of Forecasted worker:</label>
+				<input type="number" name="Number of Worker"><br><br>
+				
+				<button type="button" onclick="deleteInputSet(this)">Delete Set</button>
+			</div>
+		</div>
+		<button type="button" onclick="addInputSet()">Add Set</button>
+		
+		<button type="button" onclick="sendData()">Submit</button>
+	</form>
+
+	<h2> Match Profiles:</h2>
+  	<ul id="matched-profiles"></ul>
+
+	<script src="/JS/allform.js"></script> 
+</body>
+</html>

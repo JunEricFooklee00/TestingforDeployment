@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EMS</title>
+        <script src="https://kit.fontawesome.com/3913d1359b.js" crossorigin="anonymous"></script>
+        <link rel="shortcut icon" href="../CSS/hehe.png">
+        <link rel="stylesheet" href="./CSS/Joblist.css">
+        <script type="module" src="./JS/script.js"></script>
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="#" class="logo">
+                        <img src="../CSS/emslogo.gif" alt="">
+                        <span class = "nav-item"> WELCOME </span>
+                </a></li>
+                <li><a href="/AdminInterface">
+                    <i class="fa-sharp fa-solid fa-house"></i>
+                    <span class="nav-item">Home</span>
+                </a></li>
+                <li><a href="/ClientDatabase">
+                    <i class="fa-sharp fa-solid fa-user"></i>
+                    <span class="nav-item">Clients</span>
+                </a></li>
+                <li><a href="/EmployeeDatabase">
+                    <i class="fa-sharp fa-solid fa-user"></i>
+                    <span class="nav-item">Employees</span>
+                </a></li>
+                <li><a href="/Joblist">
+                    <i class="fa-sharp fa-solid fa-briefcase"></i>
+                    <span class="nav-item">Job List</span>
+                </a></li>
+                <li><a href="/Scheduling">
+                    <i class="fa-sharp fa-solid fa-calendar-days"></i>
+                    <span class="nav-item">Scheduling</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="fa-sharp fa-solid fa-gear"></i>
+                    <span class="nav-item">Settings</span>
+                </a></li>
+                <li><a href="/logout" class="logout">
+                    <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="nav-item">Log out</span>
+                </a></li>
+            </ul>
+        </nav>
+
+        <table class="table table-striped">
+            <tr>  
+                <th >Name</th>
+                <th >Type of Work </th>
+                <th >Job Type</th>
+                <th >Expected Finish Day</th>
+                <th >Starting Date</th>
+                <th >Unit Area</th>
+                <th >Location</th>
+                <th >Decision</th>
+            </tr>
+                <tbody>
+                {{#each list}}
+                    <tr align="center">      
+                        <td>{{this.name}}</td>
+                        <td>{{this.TypeOfWork}}</td>
+                        <td>{{this.TypeOfJob}}</td>
+                        <td>{{this.ExpectedFinishDate}}</td>
+                        <td>{{this.StartingDate}}</td>
+                        <td>{{this.Area}}{{this.Unit}}</td>
+                        <td>{{this.Location}} </td>
+                        <td>
+                            <button class="button" data-modal-target="#modal">Review</button><br>
+                            <div class="modal" id="modal">
+                                <div class="modal-header">
+                                    <div class="title">Comment</div>
+                                    <button data-close-button class="close-button">&times;</button>
+                                </div>
+                                <div class="modal-body">    
+                                    <textarea id="review" type="text" name="Comment" placeholder="Write a reason for review"></textarea>
+                                    <button id="revButton"> Submit </button>
+                                </div>
+                            </div>
+                            <div id="overlay"></div>
+
+                            <button class="button" data-modal-target="#accept">Accept</button><br>
+                            <div class="modal" id="accept">
+                                <div class="modal-header">
+                                    <div class="title">Comment</div>
+                                    <button data-close-button class="close-button">&times;</button>
+                                </div>
+                                <div class="modal-body">    
+                                    <textarea id="accept" type="text" name="accept" placeholder="Write a reason for accepting"></textarea>
+                                    <button id="accButton"> Submit </button>
+                                </div>
+                            </div>
+                            <div id="overlay"></div>
+
+                            <button class="button" data-modal-target="#decline">Decline</button><br>
+                            <div class="modal" id="decline">
+                                <div class="modal-header">
+                                    <div class="title">Comment</div>
+                                    <button data-close-button class="close-button">&times;</button>
+                                </div>
+                                <div class="modal-body">    
+                                    <textarea id="decline" type="text" name="decline" placeholder="Write a reason for declining"></textarea>
+                                    <button id="decButton"> Submit </button>
+                                </div>
+                            </div>
+                            <div id="overlay"></div>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <script>  
+            const openModalButtons = document.querySelectorAll('[data-modal-target]')
+            const closeModalButtons = document.querySelectorAll('[data-close-button]')
+            const overlay = document.getElementById('overlay')
+
+            var revButton = document.getElementById("revButton")
+
+            function saveRev(review){
+                const id = this.id
+                const jobNum = this.jobNum
+                fetch("/save-review", {
+                    method: "POST",
+                    headers:{
+                        "Content-Type": "application/json",
+                    }, body: JSON.stringify({ review:review, id:id, jobNum:jobNum }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.exists){
+                        return false
+                    }
+                })
+                .catch(error => console.error(error))
+            }
+
+            revButton.onclick = function(){
+                const review = document.getElementById("review").value
+                saveRev(review)
+            }
+            
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = document.querySelector(button.dataset.modalTarget)
+                    openModal(modal)
+                })
+            })
+            
+            overlay.addEventListener('click', () => {
+                const modals = document.querySelectorAll('.modal.active')
+                modals.forEach(modal => {
+                    closeModal(modal)
+                })
+            })
+            
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal')
+                    closeModal(modal)
+                })
+            })
+            
+            function openModal(modal){
+                if(modal == null) return
+                modal.classList.add('active')
+                overlay.classList.add('active')
+            }
+            
+            function closeModal(modal){
+                if(modal == null) return
+                modal.classList.remove('active')
+                overlay.classList.remove('active')
+            }
+        </script>
+    </body>
+</html>

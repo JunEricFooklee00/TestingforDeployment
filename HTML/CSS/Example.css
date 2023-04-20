@@ -1,0 +1,60 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* Button */
+.container-fluid .button button{
+  color: #0b243c;
+  font-weight: bolder;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  transition: 0.4s;
+  letter-spacing: 1px;
+  background: #079ef6;
+  padding: 10px 34px;
+  border-radius: 30px;
+  text-align: center;
+  border: 1px solid #fff;
+  cursor: pointer;
+  position:relative;
+  overflow:hidden;
+}
+
+.container-fluid div button:hover,
+.modal-body button:hover{
+  color: #fff;
+  background-color: #0887c6;
+  cursor: pointer;
+}
+ 
+.container-fluid div button:before{
+  content: "";
+  position: absolute;
+  height: 150px;
+  width: 50px;
+  background : #fff;
+  left: -55px;
+  top: -40px;
+  transform: rotate(37deg);
+  transition: all .3s;
+  opacity: 0.3;
+}
+  
+.container-fluid div button:hover:before{
+  left:95%;
+}
+/* End of button */
+
+
+
+
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+
+  }
+  @media only screen and (max-width: 767px) {
+    
+  }
+  

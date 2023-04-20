@@ -1,0 +1,106 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+  background-image: url("HomePageBG.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+
+
+.position-absolute {
+  border: 1px solid rgba(255, 255, 255, 0.905);
+  background-color: rgba(255, 255, 255, 0.937);
+  position: relative;
+  display: flex;
+	justify-content: center;
+  align-items: center;
+  width: 400px;
+}
+.position-absolute span{
+  position: relative;
+  font-size: 500px;
+  display: inline-block;
+  font-size: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  animation: flip 2s infinite;
+  animation-delay: calc(.2s * var(--i));
+  color: black;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.waviy span {
+  margin-right: 10px;
+}
+.waviy span.space {
+  margin-right: 20px;
+}
+@keyframes flip {
+  0%,80% {
+    transform: rotateY(360deg) 
+  }
+}
+
+
+
+/* Button */
+.container-fluid button{
+  opacity: 1;
+  color: #0b243c;
+  font-weight: bolder;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  transition: 0.4s;
+  letter-spacing: 1px;
+  background: #079ef6;
+  padding: 10px 34px;
+  border-radius: 30px;
+  text-align: center;
+  border: 1px solid #fff;
+  cursor: pointer;
+  position:relative;
+  overflow:hidden;
+}
+
+.container-fluid button:hover{
+  color: #fff;
+  background-color: #0887c6;
+  cursor: pointer;
+}
+ 
+.container-fluid button:before{
+  content: "";
+  position: absolute;
+  height: 150px;
+  width: 50px;
+  background : #fff;
+  left: -55px;
+  top: -40px;
+  transform: rotate(37deg);
+  transition: all .3s;
+  opacity: 0.3;
+}
+  
+.container-fluid button:hover:before{
+  left:95%;
+}
+/* End of button */
+
+
+
+
+
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+
+  }
+  @media only screen and (max-width: 767px) {
+    
+  }
+  
