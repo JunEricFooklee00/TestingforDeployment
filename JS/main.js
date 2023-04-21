@@ -22,7 +22,7 @@ app.set("views", templatePath)
 app.use(express.urlencoded({extended:false}))
 
 app.get("/", (req,res) => {
-    res.render("LOCALS/PortalPage")
+    res.render("LOCALS/portalpage")
 })
 
 app.get("/allform", (req,res) => {
