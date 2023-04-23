@@ -3,7 +3,7 @@ const app = express()
 const hbs = require("hbs")
 const path = require("path")
 const mongodb = require("./mongodb")
-const templatePath = path.join(__dirname, "../HTML")
+const templatePath = path.join(__dirname, "../")
 const multer = require("multer")
 const cloudinary = require("./cloudinary")
 const dataCheck = require("./dataCheck")
@@ -12,33 +12,59 @@ const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 const bcrypt = require('bcrypt')
 const { spawn } = require('child_process')
+// const mime = require('mime-types');
 
-app.use(express.static("HTML"))
+// app.use(express.static("TestingforDeployment"))
 app.use(express.static("."))
+// app.use("/HTML", express.static(path.join(process.cwd(), "TESTING")))
+// app.use(express.static(path.join(__dirname, 'CSS'), {
+//     setHeaders: function (res, path, stat) {
+//       if (path.endsWith('.css')) {
+//         res.setHeader('Content-Type', 'text/css');
+//       }
+//     },
+// }))
+
+const mime = require("mime");
+
+app.use(express.static(path.join(__dirname, "../HTML/CSS"), {
+  setHeaders: (res, path) => {
+    const mimeType = mime.getType(path);
+    if (mimeType) {
+      res.setHeader("Content-Type", mimeType);
+    }
+  }
+}));
+
+app.use(express.static(templatePath))
 app.use(express.json())
 app.use(cookieParser())
-app.set("view engine", "hbs", "ejs")
+app.set("view engine", "hbs", "css", "js")
 app.set("views", templatePath)
 app.use(express.urlencoded({extended:false}))
 
 app.get("/", (req,res) => {
-    res.render("LOCALS/portalpage")
+    res.render("HTML/LOCALS/portalpage")
+})
+
+app.get("/HTML/CSS/hehe.png", (req,res) => {
+    res.send("HTML/CSS/hehe.png")
 })
 
 app.get("/allform", (req,res) => {
-    res.render("LOCALS/ForeReco")
+    res.render("HTML/LOCALS/ForeReco")
 })
 
 app.get("/testing", (req,res) => {
-    res.render("LOCALS/testing")
+    res.render("HTML/LOCALS/testing")
 });
 
 app.get("/example", (req,res) => {
-    res.render("LOCALS/example")
+    res.render("HTML/LOCALS/example")
 });
 
 app.get("/gg", (req,res) => {
-    res.render("LOCALS/gg")
+    res.render("HTML/LOCALS/gg")
 });
 
 app.get("/jobs", (req,res) => {
@@ -53,17 +79,17 @@ app.get("/jobs", (req,res) => {
 app.get("/MachineLearningForm", authenticateToken, (req,res) => {
     mongodb.getJobOrder.find((err, docs) => {
         if(!err){
-            res.render("LOCALS/ClientInterfaces/JobOrder", {list: docs, user:req.user})
+            res.render("HTML/LOCALS/ClientInterfaces/JobOrder", {list: docs, user:req.user})
         }
     })
 })
 
 app.get("/JobOrder", authenticateToken, (req,res) => {
-    res.render("LOCALS/JobOrder")
+    res.render("HTML/LOCALS/JobOrder")
 })
 
 app.get("/Notification", (req,res) => {
-    res.render("Notification")
+    res.render("HTML/Notification")
 })
 
 app.post("/JobOrderLink", authenticateToken, (req,res) => {
@@ -71,13 +97,13 @@ app.post("/JobOrderLink", authenticateToken, (req,res) => {
         name:req.body.name,
         id:req.body.id
     }
-    res.render("LOCALS/JobOrder", {user})
+    res.render("HTML/LOCALS/JobOrder", {user})
 })
 
 app.get("/Schedule", authenticateToken, (req,res) => {
-    if(req.user.user === "Admin") res.render("LOCALS/AdminInterfaces/Adminschedule")
-    else if(req.user.user === "Employee") res.render("Locals/EmployeeInterfaces/EmployeeSchedule")
-    else if(req.user.user === "Client") res.render("LOCALS/ClientInterfaces/ClientSchedule")
+    if(req.user.user === "Admin") res.render("HTML/LOCALS/AdminInterfaces/Adminschedule")
+    else if(req.user.user === "Employee") res.render("HTML/Locals/EmployeeInterfaces/EmployeeSchedule")
+    else if(req.user.user === "Client") res.render("HTML/LOCALS/ClientInterfaces/ClientSchedule")
     else res.sendStatus(401)
 })
 
@@ -149,29 +175,29 @@ app.post("/DeleteJob", async (req, res) => {
   });
 
 app.get("/portalpage", (req,res) => {
-    res.render("LOCALS/portalpage")
+    res.render("HTML/LOCALS/portalpage")
 })
 
 app.get("/loginpage", (req,res) => {
-    res.render("LOCALS/loginpage")
+    res.render("HTML/LOCALS/loginpage")
 })
 
 app.get("/signuppage", (req,res) => {
-    res.render("LOCALS/signuppage")
+    res.render("HTML/LOCALS/signuppage")
 })
 
 app.get("/homepage", authenticateToken, (req, res) => {
-    res.render("LOCALS/homepage")
+    res.render("HTML/LOCALS/homepage")
 })
 
 app.get("/RecommendedWorker", authenticateToken, (req,res) => {
-    res.render("LOCALS/RecommendedWorker")
+    res.render("HTML/LOCALS/RecommendedWorker")
 })
 
 app.get("/jobsPending", authenticateToken, (req,res) => {
     mongodb.getJobOrder.find((err, docs) => {
         if(!err){
-            res.render("LOCALS/Joblist", {list: docs})
+            res.render("HTML/LOCALS/Joblist", {list: docs})
         }
     })
 })
@@ -187,7 +213,7 @@ app.get("/EmployeeDB", authenticateToken, (req,res) => {hbs.registerHelper('clou
   });
     mongodb.getEmployee.find((err, docs) => {
         if(!err){
-            res.render("LOCALS/AdminInterfaces/EmployeeDatabase", {list: docs})
+            res.render("HTML/LOCALS/AdminInterfaces/EmployeeDatabase", {list: docs})
             
         }
     })
@@ -196,38 +222,38 @@ app.get("/EmployeeDB", authenticateToken, (req,res) => {hbs.registerHelper('clou
 app.get("/ClientDB", authenticateToken, (req,res) => {
     mongodb.getClient.find((err, docs) => {
         if(!err){
-            res.render("LOCALS/AdminInterfaces/ClientDatabase", {list: docs})
+            res.render("HTML/LOCALS/AdminInterfaces/ClientDatabase", {list: docs})
         }
     })
 })
 
 app.get("/AdminInterface", authenticateToken, (req,res) => {
-    if(req.user.user === "Admin") res.render("LOCALS/AdminInterfaces/AdminInterface", {user:req.user})
+    if(req.user.user === "Admin") res.render("HTML/LOCALS/AdminInterfaces/AdminInterface", {user:req.user})
     else res.sendStatus(401)
 })
 
 app.post("/AdminInterface", authenticateToken, (req,res) => {
-    if(req.user.user === "Admin") res.render("LOCALS/AdminInterfaces/AdminInterface", {user:req.user})
+    if(req.user.user === "Admin") res.render("HTML/LOCALS/AdminInterfaces/AdminInterface", {user:req.user})
     else res.sendStatus(401)
 })
 
 app.get("/EmployeeInterface", authenticateToken, (req,res) => {
-    if(req.user.user === "Employee") res.render("LOCALS/EmployeeInterfaces/EmployeeInterface", {user:req.user})
+    if(req.user.user === "Employee") res.render("HTML/LOCALS/EmployeeInterfaces/EmployeeInterface", {user:req.user})
     else res.sendStatus(401)
 })
 
 app.post("/EmployeeInterface", authenticateToken, (req,res) => {
-    if(req.user.user === "Employee") res.render("LOCALS/EmployeeInterfaces/EmployeeInterface", {user:req.user})
+    if(req.user.user === "Employee") res.render("HTML/LOCALS/EmployeeInterfaces/EmployeeInterface", {user:req.user})
     else res.sendStatus(401)
 })
 
 app.get("/ClientInterface", authenticateToken, (req,res) => {
-    if(req.user.user === "Client") res.render("LOCALS/ClientInterfaces/ClientInterface", {user:req.user})
+    if(req.user.user === "Client") res.render("HTML/LOCALS/ClientInterfaces/ClientInterface", {user:req.user})
     else res.sendStatus(401)
 })
 
 app.post("/ClientInterface", authenticateToken, (req,res) => {
-    if(req.user.user === "Client") res.render("LOCALS/ClientInterfaces/ClientInterface", {user:req.user})
+    if(req.user.user === "Client") res.render("HTML/LOCALS/ClientInterfaces/ClientInterface", {user:req.user})
     else res.sendStatus(401)
 })
 
@@ -377,7 +403,7 @@ app.post("/signuppage", upload.fields([
             
             mongodb.checkUsers.checkUsers(req.body.user).insertMany([data], (err) => {
                 if(!err){
-                    res.render("LOCALS/loginpage")
+                    res.render("HTML/LOCALS/loginpage")
                 } else if(err){
                     res.sendStatus(err)
                 }
